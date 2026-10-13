@@ -87,6 +87,35 @@ def get_receitas():
     except Exception as e:
         print(e)
 
+#Exercicio 6
+def get_clima():
+    try:
+        latitude = input('Digite o latitude - até 90: ')
+        longitude = input('Digite a longitde - ate 90: ')
+        clima = requests.get(f'https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current_weather=true')
+        if clima.status_code == 200:
+            dados = clima.json()
+            print(type(dados))
+            print(dados)
+            clima_atual =dados['current_weather']
+            print(f'Temperatura:{clima_atual["temperature"]} Celsius')
+            print(f'Velocidade Vento:{clima_atual["windspeed"]} Km/h')
+    except requests.exceptions.ConnectionError as e:
+        print("Erro de conexao")
+    except Exception as e:
+        print(e)
+
+#Exercicio 7
+def get_imagem():
+    try:
+        response = requests.get('https://science.nasa.gov/wp-json/wp/v2/apod-basic', timeout=5)
+        print(type(response))
+    except Exception as e:
+        print(f'Erro: {e}')
+
+
+
+
 
 if __name__ == '__main__':
     # texto = """<body>
@@ -105,4 +134,19 @@ if __name__ == '__main__':
     #get_info_teste(url3)
     #get_municipios()
     #get_pessoas()
-    get_receitas()
+    #get_receitas()
+    #get_imagem()
+    get_clima()
+
+
+
+
+
+
+
+
+
+
+
+
+
