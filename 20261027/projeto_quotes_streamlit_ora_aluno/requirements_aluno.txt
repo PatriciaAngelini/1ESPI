@@ -1,0 +1,8 @@
+streamlit>=1.50
+requests
+beautifulsoup4
+oracledb
+
+#pip install --upgrade certifi pip-system-certs
+
+#urllib3.disable_warnings (urllib3.exceptions.InsecureRequestWarning)
